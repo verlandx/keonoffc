@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keon | Professional Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Root Theme Colors --- */
+        :root {
+            --bg-dark: #060913;
+            --card-bg: rgba(10, 20, 38, 0.7);
+            --primary-blue: #0072ff;
+            --electric-blue: #00d4ff;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(0, 212, 255, 0.25);
+        }
+
+        /* --- Global Reset & Setup --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            /* Deep ambient lighting effect */
+            background-image: 
+                radial-gradient(circle at top right, rgba(0, 114, 255, 0.15), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.1), transparent 50%);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Premium Navbar --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(6, 9, 19, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--electric-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            padding: 100px 0 80px 0;
+            text-align: center;
+        }
+
+        .hero-badge {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--electric-blue);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 24px;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-section h1 span {
+            background: linear-gradient(135deg, #0072ff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        /* --- Interactive Buttons System --- */
+        .interactive-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--electric-blue));
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 114, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.05);
+            border-color: var(--electric-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        /* --- Dynamic Skills Accordion --- */
+        .skills-section {
+            padding: 60px 0;
+        }
+
+        .accordion-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 750px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            padding: 24px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: rgba(0, 212, 255, 0.04);
+        }
+
+        .accordion-header .title-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .accordion-header i.chevron {
+            color: var(--electric-blue);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-header.active i.chevron {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(4, 7, 16, 0.5);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 24px;
+        }
+
+        @media (max-width: 500px) {
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.2s ease;
+        }
+
+        .skill-item:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.02);
+            transform: translateX(5px);
+        }
+
+        /* Tech Brand Colors */
+        .fa-html5 { color: #ff5722; }
+        .fa-css3-alt { color: #00d4ff; }
+        .fa-js { color: #ffd600; }
+        .fa-python { color: #3776ab; }
+
+        /* --- Pricing & Commercial Flow --- */
+        .pricing-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .order-notice-box {
+            background: linear-gradient(90deg, rgba(0, 114, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border-left: 4px solid var(--electric-blue);
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .order-notice-box p {
+            margin-bottom: 10px;
+        }
+        .order-notice-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .glow-text {
+            color: var(--electric-blue);
+            font-weight: 700;
+        }
+
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .tier-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .tier-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--electric-blue);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.15);
+        }
+
+        .tier-card h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .tier-card .rate {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .tier-card .rate span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 5px;
+        }
+
+        .tier-card .features-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+        }
+
+        .tier-card .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .tier-card .features-list i {
+            color: var(--electric-blue);
+            font-size: 0.85rem;
+        }
+
+        /* --- Global Footer --- */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 50px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-info {
+            margin-bottom: 15px;
+        }
+
+        .footer-info a {
+            color: var(--electric-blue);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-info a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Keon</div>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Languages</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero-section" id="about">
+            <div class="hero-badge">AVAILABLE FOR ORDERS</div>
+            <h1>Hi, I am <span>Keon</span></h1>
+            <p class="hero-p">
+                I'm a 12-year-old developer who enjoys coding, playing sports, and doing extracurricular activities. I'm mostly on throughout the day, but if I'm not, shoot me a text via email or phone!
+            </p>
+            
+            <div class="interactive-actions">
+                <a href="mailto:keonoffc@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Contact via Email
+                </a>
+                <a href="tel:4435375531" class="btn btn-secondary">
+                    <i class="fas fa-phone-alt"></i> Direct Text Line
+                </a>
+            </div>
+        </section>
+
+        <section class="skills-section" id="skills">
+            <div class="accordion-panel">
+                <button class="accordion-header" id="skillsDropdownBtn">
+                    <div class="title-area">
+                        <i class="fas fa-laptop-code" style="color: var(--electric-blue);"></i>
+                        <span>What I Can Code In</span>
+                    </div>
+                    <i class="fas fa-chevron-down chevron"></i>
+                </button>
+                <div class="accordion-body" id="skillsDropdownBody">
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fab fa-html5 fa-xl"></i>
+                            <span>HTML</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt fa-xl"></i>
+                            <span>CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js fa-xl"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-python fa-xl"></i>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section" id="pricing">
+            <div class="section-header">
+                <h2>Pricing Plans</h2>
+                <p>Fair development pricing scaled cleanly against design complexity.</p>
+            </div>
+
+            <div class="order-notice-box">
+                <p><strong>Ordering Protocol:</strong> If you want to order a website, drop your feature list directly to <span class="glow-text">keonoffc@gmail.com</span>. If a response isn't sent within 3 days, please shoot me a text at <span class="glow-text">443-537-5531</span>.</p>
+                <p><strong>Queue Policy:</strong> Final costs depend heavily on project scale and current order queue. If my queue is filled and you ask for an priority completion of your website, a <span class="glow-text">$30 priority expedite fee</span> applies.</p>
+            </div>
+
+            <div class="tier-grid">
+                <div class="tier-card">
+                    <div>
+                        <h3>Simple Website</h3>
+                        <div class="rate">$50 - $500<span>Est.</span></div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Basic structural deployment</li>
+                        <li><i class="fas fa-check"></i> Clean layout system</li>
+                        <li><i class="fas fa-check"></i> Hosting & domain config parameters</li>
+                    </ul>
+                </div>
+
+                <div class="tier-card">
+                    <div>
+                        <h3>Intermediate Website</h3>
+                        <div class="rate">$150+<span>Base</span></div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Enhanced design structures</li>
+                        <li><i class="fas fa-check"></i> Interactive modules</li>
+                        <li><i class="fas fa-check"></i> Complete domain integration setup</li>
+                    </ul>
+                </div>
+
+                <div class="tier-card">
+                    <div>
+                        <h3>Full-Stack Website</h3>
+                        <div class="rate">$450+<span>Base</span></div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Advanced interactive systems</li>
+                        <li><i class="fas fa-check"></i> Advanced element animations</li>
+                        <li><i class="fas fa-check"></i> End-to-end hosting / website setup</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <a href="mailto:keonoffc@gmail.com">keonoffc@gmail.com</a> | 
+                <a href="tel:4435375531">443-537-5531</a>
+            </div>
+            <p>&copy; 2026 Keon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const dropdownButton = document.getElementById('skillsDropdownBtn');
+        const dropdownBody = document.getElementById('skillsDropdownBody');
+
+        dropdownButton.addEventListener('click', () => {
+            const isActive = dropdownButton.classList.toggle('active');
+            
+            if (isActive) {
+                dropdownBody.style.maxHeight = dropdownBody.scrollHeight + "px";
+            } else {
+                dropdownBody.style.maxHeight = "0";
+            }
+        });
+    </script>
+</body>
+</html>
