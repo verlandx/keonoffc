@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keon | Professional Web Developer</title>
+    <title>Keon | Developer Portfolio</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- Root Theme Colors --- */
+        /* --- Colors & Theme --- */
         :root {
             --bg-dark: #060913;
             --card-bg: rgba(10, 20, 38, 0.7);
             --primary-blue: #0072ff;
             --electric-blue: #00d4ff;
+            --venmo-blue: #008CFF;
             --text-main: #ffffff;
             --text-muted: #94a3b8;
             --border-glow: rgba(0, 212, 255, 0.25);
         }
 
-        /* --- Global Reset & Setup --- */
+        /* --- Global Reset --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +33,7 @@
             color: var(--text-main);
             min-height: 100vh;
             overflow-x: hidden;
-            /* Deep ambient lighting effect */
+            /* Cool blue background glow */
             background-image: 
                 radial-gradient(circle at top right, rgba(0, 114, 255, 0.15), transparent 40%),
                 radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.1), transparent 50%);
@@ -43,7 +45,7 @@
             padding: 0 20px;
         }
 
-        /* --- Premium Navbar --- */
+        /* --- Navbar --- */
         header {
             position: sticky;
             top: 0;
@@ -89,9 +91,30 @@
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         }
 
-        /* --- Hero Section --- */
+        /* --- Sections Universal Layout --- */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* --- Hero / About Me --- */
         .hero-section {
-            padding: 100px 0 80px 0;
+            padding-top: 100px;
             text-align: center;
         }
 
@@ -131,16 +154,16 @@
             line-height: 1.6;
         }
 
-        /* --- Interactive Buttons System --- */
+        /* --- Buttons --- */
         .interactive-actions {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 14px 32px;
+            padding: 14px 28px;
             border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
@@ -177,9 +200,21 @@
             box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
         }
 
-        /* --- Dynamic Skills Accordion --- */
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+        }
+
+        .btn-instagram:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(220, 39, 67, 0.5);
+        }
+
+        /* --- Drop-down Box --- */
         .skills-section {
-            padding: 60px 0;
+            padding: 40px 0;
         }
 
         .accordion-panel {
@@ -264,33 +299,66 @@
             transform: translateX(5px);
         }
 
-        /* Tech Brand Colors */
+        /* Icons Colors */
         .fa-html5 { color: #ff5722; }
         .fa-css3-alt { color: #00d4ff; }
         .fa-js { color: #ffd600; }
         .fa-python { color: #3776ab; }
 
-        /* --- Pricing & Commercial Flow --- */
-        .pricing-section {
-            padding: 80px 0;
+        /* --- Portfolio Showcase Section --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
+        .portfolio-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .section-header h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 12px;
+        .portfolio-card:hover {
+            border-color: var(--electric-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.1);
         }
 
-        .section-header p {
+        .portfolio-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .portfolio-card p {
             color: var(--text-muted);
-            font-size: 1.05rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
 
+        .portfolio-link {
+            color: var(--electric-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .portfolio-link:hover {
+            color: #fff;
+        }
+
+        /* --- Pricing & Ordering --- */
         .order-notice-box {
             background: linear-gradient(90deg, rgba(0, 114, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 100%);
             border-left: 4px solid var(--electric-blue);
@@ -351,13 +419,6 @@
             align-items: baseline;
         }
 
-        .tier-card .rate span {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-left: 5px;
-        }
-
         .tier-card .features-list {
             list-style: none;
             color: var(--text-muted);
@@ -379,7 +440,65 @@
             font-size: 0.85rem;
         }
 
-        /* --- Global Footer --- */
+        /* --- Terms & Payment Section --- */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .rule-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .rule-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .rule-card h3 i {
+            color: var(--electric-blue);
+        }
+
+        .rule-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Venmo Platform Layout */
+        .venmo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 140, 255, 0.1);
+            border: 1px solid rgba(0, 140, 255, 0.3);
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: inline-flex;
+        }
+
+        .venmo-box i {
+            color: var(--venmo-blue);
+            font-size: 1.4rem;
+        }
+
+        .venmo-box span {
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Footer --- */
         footer {
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding: 50px 0;
@@ -390,51 +509,70 @@
 
         .footer-info {
             margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .footer-info a {
-            color: var(--electric-blue);
+            color: var(--text-muted);
             text-decoration: none;
-            margin: 0 10px;
             transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .footer-info a:hover {
-            color: #fff;
+            color: var(--electric-blue);
+        }
+        
+        .footer-info a.insta-footer:hover {
+            color: #e6683c;
         }
     </style>
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <header>
         <div class="container nav-container">
             <div class="logo">Keon</div>
             <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Languages</a></li>
+                <li><a href="#portfolio">Projects</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#terms">Terms</a></li>
             </ul>
         </div>
     </header>
 
     <div class="container">
+        <!-- Hero Section -->
         <section class="hero-section" id="about">
-            <div class="hero-badge">AVAILABLE FOR ORDERS</div>
-            <h1>Hi, I am <span>Keon</span></h1>
+            <div class="hero-badge">OPEN FOR ORDERS</div>
+            <h1>Hi, I'm <span>Keon</span></h1>
             <p class="hero-p">
-                I'm a 12-year-old developer who enjoys coding, playing sports, and doing extracurricular activities. I'm mostly on throughout the day, but if I'm not, shoot me a text via email or phone!
+                I'm a 12 year old developer who enjoys coding, playing sports, and doing extracurricular activities. I'm mostly on throughout the day, but if I'm not, shoot me a text via email or text.
             </p>
             
+            <!-- Interactive Action Buttons -->
             <div class="interactive-actions">
                 <a href="mailto:keonoffc@gmail.com" class="btn btn-primary">
-                    <i class="fas fa-envelope"></i> Contact via Email
+                    <i class="fas fa-envelope"></i> Shoot Me an Email
                 </a>
                 <a href="tel:4435375531" class="btn btn-secondary">
-                    <i class="fas fa-phone-alt"></i> Direct Text Line
+                    <i class="fas fa-phone-alt"></i> Send Me a Text
+                </a>
+                <a href="https://instagram.com/keoncodes" target="_blank" class="btn btn-instagram">
+                    <i class="fab fa-instagram"></i> @keoncodes
                 </a>
             </div>
         </section>
 
+        <!-- What I Can Code In Section (Drop-down Menu) -->
         <section class="skills-section" id="skills">
             <div class="accordion-panel">
                 <button class="accordion-header" id="skillsDropdownBtn">
@@ -467,67 +605,125 @@
             </div>
         </section>
 
+        <!-- Portfolio Work Showcase Section -->
+        <section id="portfolio">
+            <div class="section-header">
+                <h2>My Work</h2>
+                <p>Check out some of the cool projects I've coded recently!</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div>
+                        <h3>Miracle Powerwashing</h3>
+                        <p>A high-end website built with a professional layout, smooth animations, and optimized code for a local powerwashing business.</p>
+                    </div>
+                    <a href="https://miraclepowerwashing.com" target="_blank" class="portfolio-link">
+                        View Project <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing & Ordering Management Info -->
         <section class="pricing-section" id="pricing">
             <div class="section-header">
                 <h2>Pricing Plans</h2>
-                <p>Fair development pricing scaled cleanly against design complexity.</p>
+                <p>Check out my prices below based on how complex you want your site to be!</p>
             </div>
 
+            <!-- How to Order Info Box -->
             <div class="order-notice-box">
-                <p><strong>Ordering Protocol:</strong> If you want to order a website, drop your feature list directly to <span class="glow-text">keonoffc@gmail.com</span>. If a response isn't sent within 3 days, please shoot me a text at <span class="glow-text">443-537-5531</span>.</p>
-                <p><strong>Queue Policy:</strong> Final costs depend heavily on project scale and current order queue. If my queue is filled and you ask for an priority completion of your website, a <span class="glow-text">$30 priority expedite fee</span> applies.</p>
+                <p><strong>How to Order:</strong> If you would like to order a website from me, shoot me a email at <span class="glow-text">keonoffc@gmail.com</span>, if I don't respond within 3 days, then you can shoot me a text at <span class="glow-text">443-537-5531</span>.</p>
+                <p><strong>About Prices:</strong> I charge depending on my queue of orders and how complex the website is to code. If there is a long queue and you need your website coded asap, there's a <span class="glow-text">$30 priority fee</span> you would have to pay.</p>
             </div>
 
+            <!-- Pricing Cards Grid -->
             <div class="tier-grid">
                 <div class="tier-card">
                     <div>
                         <h3>Simple Website</h3>
-                        <div class="rate">$50 - $500<span>Est.</span></div>
+                        <div class="rate">$50 - $500</div>
                     </div>
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Basic structural deployment</li>
-                        <li><i class="fas fa-check"></i> Clean layout system</li>
-                        <li><i class="fas fa-check"></i> Hosting & domain config parameters</li>
+                        <li><i class="fas fa-check"></i> Basic setup</li>
+                        <li><i class="fas fa-check"></i> Clean layout</li>
+                        <li><i class="fas fa-check"></i> Depends on hosting, domain, etc.</li>
                     </ul>
                 </div>
 
                 <div class="tier-card">
                     <div>
                         <h3>Intermediate Website</h3>
-                        <div class="rate">$150+<span>Base</span></div>
+                        <div class="rate">$150+</div>
                     </div>
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Enhanced design structures</li>
-                        <li><i class="fas fa-check"></i> Interactive modules</li>
-                        <li><i class="fas fa-check"></i> Complete domain integration setup</li>
+                        <li><i class="fas fa-check"></i> Cool custom designs</li>
+                        <li><i class="fas fa-check"></i> Interactive features</li>
+                        <li><i class="fas fa-check"></i> Depends on hosting, domain, etc.</li>
                     </ul>
                 </div>
 
                 <div class="tier-card">
                     <div>
                         <h3>Full-Stack Website</h3>
-                        <div class="rate">$450+<span>Base</span></div>
+                        <div class="rate">$450+</div>
                     </div>
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Advanced interactive systems</li>
-                        <li><i class="fas fa-check"></i> Advanced element animations</li>
-                        <li><i class="fas fa-check"></i> End-to-end hosting / website setup</li>
+                        <li><i class="fas fa-check"></i> Full interactive experience</li>
+                        <li><i class="fas fa-check"></i> Advanced configurations</li>
+                        <li><i class="fas fa-check"></i> Hosting and domain included</li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Policy, Terms & Payment Options Section -->
+        <section id="terms">
+            <div class="section-header">
+                <h2>Project Rules & Payments</h2>
+                <p>Important details about how I run my development queue and take payments.</p>
+            </div>
+            
+            <div class="rules-grid">
+                <!-- Timeframe rule -->
+                <div class="rule-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Timeframe</h3>
+                    <p>It usually takes anywhere from <strong>3 days to 2 weeks</strong> to finish your website. This timeline depends completely on my school workload, sports, and overall personal schedule.</p>
+                </div>
+
+                <!-- Revisions rule -->
+                <div class="rule-card">
+                    <h3><i class="fas fa-edit"></i> Revisions & Edits</h3>
+                    <p>I gladly include up to <strong>3 free changes</strong> after the website is finished. If you need any extra changes or updates after those initial 3, it will include a <strong>$10 fee per change</strong>.</p>
+                </div>
+
+                <!-- Payment Policy rule & Venmo Box -->
+                <div class="rule-card">
+                    <h3><i class="fas fa-hand-holding-usd"></i> Payment Policy</h3>
+                    <p>Payment is expected right away <strong>upon checkout</strong> before I begin coding, not after the website is completely finished.</p>
+                    
+                    <div class="venmo-box">
+                        <i class="fab fa-vimeo-v"></i> <!-- Venmo custom styled brand layout -->
+                        <span>venmo accepted</span>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 
+    <!-- Global Footer Information -->
     <footer>
         <div class="container">
             <div class="footer-info">
-                <a href="mailto:keonoffc@gmail.com">keonoffc@gmail.com</a> | 
-                <a href="tel:4435375531">443-537-5531</a>
+                <a href="mailto:keonoffc@gmail.com"><i class="fas fa-envelope"></i> keonoffc@gmail.com</a>
+                <a href="tel:4435375531"><i class="fas fa-phone-alt"></i> 443-537-5531</a>
+                <a href="https://instagram.com/keoncodes" target="_blank" class="insta-footer"><i class="fab fa-instagram"></i> @keoncodes</a>
             </div>
             <p>&copy; 2026 Keon. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Interactive Component Scripting -->
     <script>
         const dropdownButton = document.getElementById('skillsDropdownBtn');
         const dropdownBody = document.getElementById('skillsDropdownBody');
