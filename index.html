@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keon | Developer Portfolio</title>
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* --- Colors & Theme --- */
@@ -58,6 +57,7 @@
 
         .nav-container {
             display: flex;
+            justify-between: space-between;
             justify-content: space-between;
             align-items: center;
             height: 80px;
@@ -406,6 +406,7 @@
         .tier-card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 166px;
             border-radius: 16px;
             padding: 35px;
             display: flex;
@@ -506,105 +507,6 @@
         .venmo-box i { color: var(--venmo-blue); font-size: 1.4rem; }
         .venmo-box span { font-weight: 700; color: #fff; letter-spacing: 0.5px; }
 
-        /* --- Ordering Popup Panel Modal --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(4, 6, 12, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 10000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
-
-        .modal-card {
-            background: #0d1326;
-            border: 1px solid var(--border-glow);
-            width: 100%; max-width: 550px;
-            border-radius: 16px;
-            padding: 35px;
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.active .modal-card { transform: scale(1); }
-
-        .modal-close {
-            position: absolute; top: 20px; right: 20px;
-            background: none; border: none; color: var(--text-muted);
-            font-size: 1.4rem; cursor: pointer; transition: color 0.2s;
-        }
-
-        .modal-close:hover { color: var(--danger); }
-
-        .modal-card h2 { font-size: 1.8rem; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
-        .modal-card h2 i { color: var(--electric-blue); }
-
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: #cbd5e1; }
-        
-        .form-input {
-            width: 100%; background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px; padding: 12px 16px; color: #fff;
-            font-size: 1rem; transition: all 0.3s;
-        }
-        .form-input:focus { outline: none; border-color: var(--electric-blue); background: rgba(0, 212, 255, 0.02); }
-
-        /* Selection Chips */
-        .chip-group { display: flex; flex-wrap: wrap; gap: 10px; }
-        .chip-option {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 18px; border-radius: 30px; cursor: pointer; font-size: 0.9rem;
-            font-weight: 600; color: var(--text-muted); transition: all 0.2s;
-        }
-        .chip-option:hover { border-color: rgba(0, 212, 255, 0.5); color: #fff; }
-        .chip-option.selected {
-            background: rgba(0, 212, 255, 0.15); border-color: var(--electric-blue); color: var(--electric-blue);
-        }
-
-        /* Custom Slider Layout */
-        .slider-container { display: flex; align-items: center; gap: 15px; margin-top: 5px; }
-        .range-slider { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 5px; background: #1e293b; outline: none; }
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
-            background: var(--electric-blue); cursor: pointer; box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
-        }
-        .slider-val { font-size: 1.1rem; font-weight: 700; color: var(--electric-blue); min-width: 70px; text-align: right; }
-
-        /* --- Administrative Dashboard Layout --- */
-        .admin-dashboard {
-            background: #090e1a; border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 60px 0; display: none;
-        }
-        .admin-dashboard.visible { display: block; }
-        
-        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .dash-badge { background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; }
-
-        .order-table-container { background: rgba(10, 20, 38, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; overflow: hidden; }
-        .order-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
-        .order-table th { background: rgba(255, 255, 255, 0.02); padding: 16px 20px; color: #cbd5e1; font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .order-table td { padding: 16px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #e2e8f0; }
-        .order-table tr:last-child td { border-bottom: none; }
-        .no-orders { padding: 40px; text-align: center; color: var(--text-muted); }
-
-        .badge-type { background: rgba(255, 255, 255, 0.05); padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .badge-type.simple { color: #38bdf8; border-color: rgba(56, 189, 248, 0.2); }
-        .badge-type.intermediate { color: #a855f7; border-color: rgba(168, 85, 247, 0.2); }
-        .badge-type.full-stack { color: #f59e0b; border-color: rgba(245, 158, 11, 0.2); }
-
-        .btn-action { padding: 6px 12px; font-size: 0.85rem; border-radius: 6px; cursor: pointer; font-weight: 600; }
-        .btn-complete { background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2); }
-        .btn-complete:hover { background: var(--success); color: #000; }
-
         /* --- Footer --- */
         footer {
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -615,17 +517,10 @@
         .footer-info a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
         .footer-info a:hover { color: var(--electric-blue); }
         .footer-info a.insta-footer:hover { color: #e6683c; }
-
-        .btn-login-trigger {
-            background: none; border: none; color: rgba(255, 255, 255, 0.15); font-size: 0.85rem;
-            cursor: pointer; text-decoration: underline; transition: color 0.2s; margin-top: 15px;
-        }
-        .btn-login-trigger:hover { color: var(--electric-blue); }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header>
         <div class="container nav-container">
             <div class="logo">Keon</div>
@@ -637,15 +532,14 @@
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#terms">Terms</a></li>
                 </ul>
-                <button class="btn btn-nav-order" id="openOrderBtn">
-                    <i class="fas fa-shopping-cart"></i> Order Here
-                </button>
+                <a href="mailto:keonoffc@gmail.com?subject=Website%20Order%20Request" class="btn btn-nav-order">
+                    <i class="fas fa-envelope"></i> Order Here
+                </a>
             </div>
         </div>
     </header>
 
     <div class="container">
-        <!-- Hero Section -->
         <section class="hero-section" id="about">
             <div class="hero-badge">OPEN FOR ORDERS</div>
             <h1>Hi, I'm <span>Keon</span></h1>
@@ -666,7 +560,6 @@
             </div>
         </section>
 
-        <!-- Languages Dropped Menu Section -->
         <section class="skills-section" id="skills">
             <div class="accordion-panel">
                 <button class="accordion-header" id="skillsDropdownBtn">
@@ -699,7 +592,6 @@
             </div>
         </section>
 
-        <!-- Portfolio Showcase Section -->
         <section id="portfolio">
             <div class="section-header">
                 <h2>My Work</h2>
@@ -718,7 +610,6 @@
             </div>
         </section>
 
-        <!-- Pricing Plans -->
         <section class="pricing-section" id="pricing">
             <div class="section-header">
                 <h2>Pricing Plans</h2>
@@ -726,7 +617,7 @@
             </div>
 
             <div class="order-notice-box">
-                <p><strong>How to Order:</strong> If you would like to order a website from me, click the <span class="glow-text">Order Here</span> button in the top right corner to submit your order directly into my dashboard queue!</p>
+                <p><strong>How to Order:</strong> If you would like to order a website from me, click the <span class="glow-text">Order Here</span> button in the top right corner or use the direct buttons above to email me your project ideas!</p>
                 <p><strong>About Prices:</strong> I charge depending on my queue of orders and how complex the website is to code. If there is a long queue and you need your website coded asap, there's a <span class="glow-text">$30 priority fee</span> you would have to pay.</p>
             </div>
 
@@ -769,7 +660,6 @@
             </div>
         </section>
 
-        <!-- Rules & Payments Section -->
         <section id="terms">
             <div class="section-header">
                 <h2>Project Rules & Payments</h2>
@@ -800,108 +690,6 @@
         </section>
     </div>
 
-    <!-- Interactive Ordering Modal Overlay -->
-    <div class="modal-overlay" id="orderModal">
-        <div class="modal-card">
-            <button class="modal-close" id="closeOrderModal">&times;</button>
-            <h2><i class="fas fa-file-invoice"></i> Submit an Order</h2>
-            <form id="orderForm">
-                <div class="form-group">
-                    <label for="orderName">Your Name</label>
-                    <input type="text" id="orderName" class="form-input" placeholder="Enter your full name" required>
-                </div>
-
-                <div class="form-group">
-                    <label>What You're Ordering</label>
-                    <div class="chip-group" id="tierChipGroup">
-                        <div class="chip-option selected" data-value="Simple">Simple</div>
-                        <div class="chip-option" data-value="Intermediate">Intermediate</div>
-                        <div class="chip-option" data-value="Full-Stack">Full-Stack</div>
-                        <div class="chip-option" data-value="Other">Other</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="orderContact">Email & Contact Information</label>
-                    <input type="text" id="orderContact" class="form-input" placeholder="email@example.com or phone number" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="orderBudget">Price Limit</label>
-                    <div class="slider-container">
-                        <input type="range" id="orderBudget" class="range-slider" min="50" max="5000" step="25" value="250">
-                        <div class="slider-val" id="budgetDisplay">$250</div>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">
-                    <i class="fas fa-paper-plane"></i> Send Order Request
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Administrative Login Modal Overlay -->
-    <div class="modal-overlay" id="loginModal">
-        <div class="modal-card" style="max-width: 400px;">
-            <button class="modal-close" id="closeLoginModal">&times;</button>
-            <h2><i class="fas fa-lock"></i> Owner Login</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginUser">Username</label>
-                    <input type="text" id="loginUser" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPass">Password</label>
-                    <input type="password" id="loginPass" class="form-input" required>
-                </div>
-                <div id="loginError" style="color: var(--danger); font-size: 0.9rem; margin-bottom: 15px; display: none;">
-                    Invalid username or password.
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                    Log In
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Owner Active Orders Dashboard Area Layout -->
-    <section class="admin-dashboard" id="adminDashboard">
-        <div class="container">
-            <div class="dash-header">
-                <div>
-                    <h2 style="font-size: 1.8rem; margin-bottom: 5px;"><i class="fas fa-chart-pie" style="color: var(--success);"></i> Owner Dashboard</h2>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Logged in as: <span id="currentUserDisplay" style="color: #fff; font-weight: 600;"></span></p>
-                </div>
-                <button class="btn btn-secondary" id="logoutBtn" style="padding: 8px 16px; font-size: 0.85rem;">
-                    <i class="fas fa-sign-out-alt"></i> Log Out
-                </button>
-            </div>
-
-            <div class="order-table-container">
-                <table class="order-table" id="ordersTable">
-                    <thead>
-                        <tr>
-                            <th>Client Name</th>
-                            <th>Package Tier</th>
-                            <th>Contact Info</th>
-                            <th>Price Limit</th>
-                            <th style="text-align: right;">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ordersTableBody">
-                        <!-- Dynamic orders row strings go here -->
-                    </tbody>
-                </table>
-                <div class="no-orders" id="noOrdersMessage">
-                    <i class="fas fa-folder-open fa-2x" style="display: block; margin-bottom: 10px; color: rgba(255,255,255,0.1);"></i>
-                    No active incoming portfolio orders found.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Global Footer -->
     <footer>
         <div class="container">
             <div class="footer-info">
@@ -910,16 +698,10 @@
                 <a href="https://instagram.com/keoncodes" target="_blank" class="insta-footer"><i class="fab fa-instagram"></i> @keoncodes</a>
             </div>
             <p>&copy; 2026 Keon. All rights reserved.</p>
-            <button class="btn-login-trigger" id="triggerLoginModalBtn">Dashboard Access</button>
         </div>
     </footer>
 
-    <!-- Scripts Layout Operations Logic -->
     <script>
-        /* --- State Management Configurations --- */
-        let activeOrders = JSON.parse(localStorage.getItem('keon_portfolio_orders')) || [];
-        let chosenPackageTier = 'Simple';
-
         /* --- Drop-down Box Interactive Configs --- */
         const dropdownButton = document.getElementById('skillsDropdownBtn');
         const dropdownBody = document.getElementById('skillsDropdownBody');
@@ -928,157 +710,6 @@
             const isActive = dropdownButton.classList.toggle('active');
             dropdownBody.style.maxHeight = isActive ? dropdownBody.scrollHeight + "px" : "0";
         });
-
-        /* --- Modal Core Display Triggers --- */
-        const orderModal = document.getElementById('orderModal');
-        const loginModal = document.getElementById('loginModal');
-        
-        document.getElementById('openOrderBtn').addEventListener('click', () => orderModal.classList.add('active'));
-        document.getElementById('closeOrderModal').addEventListener('click', () => orderModal.classList.remove('active'));
-        
-        document.getElementById('triggerLoginModalBtn').addEventListener('click', () => {
-            if(localStorage.getItem('keon_auth_user')) {
-                showDashboard();
-            } else {
-                loginModal.classList.add('active');
-            }
-        });
-        document.getElementById('closeLoginModal').addEventListener('click', () => {
-            loginModal.classList.remove('active');
-            document.getElementById('loginError').style.display = 'none';
-        });
-
-        /* --- Option Array Chip-Selection Handling --- */
-        const chips = document.querySelectorAll('#tierChipGroup .chip-option');
-        chips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                chips.forEach(c => c.classList.remove('selected'));
-                chip.classList.add('selected');
-                chosenPackageTier = chip.getAttribute('data-value');
-            });
-        });
-
-        /* --- Custom Range Input Slider Mechanics --- */
-        const sliderInput = document.getElementById('orderBudget');
-        const sliderLabel = document.getElementById('budgetDisplay');
-        sliderInput.addEventListener('input', (e) => {
-            sliderLabel.textContent = `$${e.target.value}`;
-        });
-
-        /* --- Submission System Operations --- */
-        document.getElementById('orderForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const newOrder = {
-                id: Date.now(),
-                name: document.getElementById('orderName').value,
-                tier: chosenPackageTier,
-                contact: document.getElementById('orderContact').value,
-                budget: sliderInput.value
-            };
-
-            activeOrders.push(newOrder);
-            localStorage.setItem('keon_portfolio_orders', JSON.stringify(activeOrders));
-            
-            // Clean interface properties
-            document.getElementById('orderForm').reset();
-            sliderLabel.textContent = '$250';
-            chips.forEach(c => c.classList.remove('selected'));
-            chips[0].classList.add('selected');
-            chosenPackageTier = 'Simple';
-            
-            orderModal.classList.remove('active');
-            alert('Thank you! Your order request was successfully sent straight to Keon\'s dashboard queue.');
-            
-            if(localStorage.getItem('keon_auth_user')) {
-                renderDashboardOrders();
-            }
-        });
-
-        /* --- Administrative Dashboard Authentication Flow --- */
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const u = document.getElementById('loginUser').value;
-            const p = document.getElementById('loginPass').value;
-            const err = document.getElementById('loginError');
-
-            if ((u === 'keonoffc' && p === 'Kplays1$1$') || (u === 'guest' && p === 'guest1$1$')) {
-                localStorage.setItem('keon_auth_user', u);
-                err.style.display = 'none';
-                document.getElementById('loginForm').reset();
-                loginModal.classList.remove('active');
-                showDashboard();
-            } else {
-                err.style.display = 'block';
-            }
-        });
-
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            localStorage.removeItem('keon_auth_user');
-            document.getElementById('adminDashboard').classList.remove('visible');
-        });
-
-        function showDashboard() {
-            const user = localStorage.getItem('keon_auth_user');
-            document.getElementById('currentUserDisplay').textContent = user;
-            document.getElementById('adminDashboard').classList.add('visible');
-            renderDashboardOrders();
-            document.getElementById('adminDashboard').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function renderDashboardOrders() {
-            const tbody = document.getElementById('ordersTableBody');
-            const noOrders = document.getElementById('noOrdersMessage');
-            const table = document.getElementById('ordersTable');
-
-            tbody.innerHTML = '';
-            
-            if (activeOrders.length === 0) {
-                table.style.display = 'none';
-                noOrders.style.display = 'block';
-                return;
-            }
-
-            table.style.display = 'table';
-            noOrders.style.display = 'none';
-
-            activeOrders.forEach(order => {
-                const tr = document.createElement('tr');
-                const lowerTier = order.tier.toLowerCase();
-                
-                tr.innerHTML = `
-                    <td style="font-weight:600;">${escapeHTML(order.name)}</td>
-                    <td><span class="badge-type ${lowerTier}">${order.tier}</span></td>
-                    <td>${escapeHTML(order.contact)}</td>
-                    <td style="color:var(--electric-blue); font-weight:700;">$${order.budget}</td>
-                    <td style="text-align: right;">
-                        <button class="btn-action btn-complete" onclick="removeOrder(${order.id})">
-                            <i class="fas fa-check"></i> Complete
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        window.removeOrder = function(id) {
-            activeOrders = activeOrders.filter(o => o.id !== id);
-            localStorage.setItem('keon_portfolio_orders', JSON.stringify(activeOrders));
-            renderDashboardOrders();
-        };
-
-        function escapeHTML(str) {
-            return str.replace(/[&<>'"]/g, 
-                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
-            );
-        }
-
-        // Keep session open upon document reload validation checks
-        if(localStorage.getItem('keon_auth_user')) {
-            document.getElementById('currentUserDisplay').textContent = localStorage.getItem('keon_auth_user');
-            document.getElementById('adminDashboard').classList.add('visible');
-            renderDashboardOrders();
-        }
     </script>
 </body>
 </html>
