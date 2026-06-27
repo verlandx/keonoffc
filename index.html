@@ -650,7 +650,7 @@
             <div class="hero-badge">OPEN FOR ORDERS</div>
             <h1>Hi, I'm <span>Keon</span></h1>
             <p class="hero-p">
-                I'm a 12 year old developer who enjoys coding, playing sports, and doing extracurricular activities. I'm mostly on throughout the day, but if I'm not, shoot me a text via email or text.
+                I'm a 13 year old developer who enjoys coding, playing sports, and doing extracurricular activities. I'm mostly on throughout the day, but if I'm not, shoot me a text via email or text.
             </p>
             
             <div class="interactive-actions">
@@ -1077,6 +1077,7 @@
         if(localStorage.getItem('keon_auth_user')) {
             document.getElementById('currentUserDisplay').textContent = localStorage.getItem('keon_auth_user');
             document.getElementById('adminDashboard').classList.add('visible');
+            renderDashboardOrders();
         }
     </script>
 </body>
